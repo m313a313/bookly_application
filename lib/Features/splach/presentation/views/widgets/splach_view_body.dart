@@ -1,6 +1,8 @@
+import 'package:booklyapp/Features/splach/presentation/views/home/data/presentation/views/home_view.dart';
 import 'package:booklyapp/Features/splach/presentation/views/widgets/slide_text_animation.dart';
 import 'package:booklyapp/core/utlti/asset_data.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplachViewBody extends StatefulWidget {
   const SplachViewBody({super.key});
@@ -16,6 +18,17 @@ class _SplachViewBodyState extends State<SplachViewBody>
   @override
   void initState() {
     super.initState();
+    initSlidingAnimation();
+    navigateToHomeWithDuration();
+  }
+
+  void navigateToHomeWithDuration() {
+      Future.delayed(const Duration(seconds: 2), () {
+      Get.to(() =>const  HomeView(),transition: Transition.fade,duration: const Duration(microseconds: 250));
+    });
+  }
+
+  void initSlidingAnimation() {
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
 
